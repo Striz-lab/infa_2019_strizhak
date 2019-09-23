@@ -468,4 +468,35 @@ if __name__ == "__main__":
     brushColor( randint(0,255),randint(0,255),randint(0,255))
     polygon([(70,100), (150,i), (230,100), (70,100)])
 
-  run()
+#----------------------------------
+
+def oval(x, y, a, b):
+    x1 = x - a; y1 = y - b
+    x2 = x + a; y2 = y + b
+    x1, y1 = transformCoord ( x1, y1 )
+    x2, y2 = transformCoord ( x2, y2 )
+    cir = _C.create_oval(x1, y1, x2, y2,
+                         outline = _penColor,
+                         width = _penSize,
+                         fill = _brushColor)
+    c = (y1+y2)/2
+    d = (x1+x2)/2
+    #polygon([(x1,c),(x2,c)])
+    #polygon([(d,y1),(d,y2)])
+    return cir
+
+
+import math
+def ovl(x, y, a, b):
+    x1 = x - a; y1 = y - b
+    x2 = x + a; y2 = y + b
+    x1, y1 = transformCoord ( x1*math.cos(22)-y1*math.sin(22), y1*math.sin(22)+x1*math.cos(22) )
+    x2, y2 = transformCoord ( x2*math.cos(22)-y2*math.sin(22), y2*math.sin(22)+x2*math.cos(22) )
+    ciru = _C.create_oval(x1, y1, x2, y2,
+                         outline = _penColor,
+                         width = _penSize,
+                         fill = _brushColor)
+                         
+    return ciru
+
+
