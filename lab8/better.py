@@ -226,5 +226,4 @@ def new_game():
 
 new_game()
 
-
 root.mainloop()
