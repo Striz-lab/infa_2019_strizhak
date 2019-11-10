@@ -1,10 +1,9 @@
-from random import randrange as rnd, choice
+
 import tkinter as tk
 import math
 import time
 import array
 
-# print (dir(math))
 
 root = tk.Tk()
 fr = tk.Frame(root)
@@ -73,7 +72,7 @@ class ball():
             self.vx=-self.vx/2
             self.x=779
 
-    def hittest(self, ob):
+    def hittest(self, obj):
         
         """Функция проверяет сталкивалкивается ли данный обьект с целью, описываемой в обьекте obj.
 
@@ -82,7 +81,7 @@ class ball():
         Returns:
             Возвращает True в случае столкновения мяча и цели. В противном случае возвращает False.
         """
-        if  abs(ob.x-self.x)<=(self.r+ob.r) and abs(ob.y-self.y)<=(self.r+ob.r):
+        if  abs(obj.x-self.x)<=(self.r+obj.r) and abs(obj.y-self.y)<=(self.r+obj.r):
             return True
         else:
             return False
@@ -153,12 +152,6 @@ class target():
         x = self.x = rnd(600, 780)
         y = self.y = rnd(300, 550)
         r = self.r = rnd(7, 50)
-        self.dx = rnd (-3*parametr, 3*parametr)
-        self.dy = rnd (-3*parametr, 3*parametr)
-        self.a1 = rnd(50, 100)
-        self.w1 = rnd(1*parametr,100*parametr)
-        self.w1 = self.w1/1000
-        self.b1 = rnd(50, 100)
         color = self.color = 'red'
         canv.coords(self.id, x-r, y-r, x+r, y+r)
         canv.itemconfig(self.id, fill=color)
@@ -168,15 +161,6 @@ class target():
         canv.coords(self.id, -10, -10, -10, -10)
         self.points += points
         canv.itemconfig(self.id_points, text=self.points)
-    def move(self):
-        global parametr
-        canv.move(self.id, self.dx, self.dy)
-        self.dx = -self.a1*self.w1*math.sin(self.w1*ptr)
-        self.dy = self.b1*self.w1*math.cos(self.w1*ptr)
-        self.y += self.dy
-        self.x += self.dx
-        ptr+=1
-        parametr+=1
 
 
 t1 = target()
@@ -190,7 +174,7 @@ balls = []
 def new_game(event=''):
     global gun, t1, screen1, balls, bullet
     t1.new_target()
-    t1.move()
+
     bullet = 0
     balls = []
     canv.bind('<Button-1>', g1.fire2_start)
@@ -223,3 +207,4 @@ new_game()
 
 #tk.mainloop()
 root.mainloop()
+
