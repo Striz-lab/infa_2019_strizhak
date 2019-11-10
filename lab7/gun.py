@@ -1,4 +1,4 @@
-
+from random import randrange as rnd, choice
 import tkinter as tk
 import math
 import time
