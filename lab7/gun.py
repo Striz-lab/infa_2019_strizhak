@@ -205,6 +205,6 @@ def new_game(event=''):
 new_game()
 
 
-#tk.mainloop()
+
 root.mainloop()
 
